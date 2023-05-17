@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import heroImg from "../../assets/images/hero-image.png"
+import heroImg from "../../assets/images/hero-image.png";
+import "./hero.css";
 
 function Hero() {
   return (
-    <div>
+    <div className="hero-section">
       <div className="hero-left">
         <h1>Welcome to Quotastic</h1>
         <p>
