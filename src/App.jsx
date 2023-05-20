@@ -2,21 +2,15 @@ import { useEffect } from "react";
 import "./App.css";
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import api from "./api/quotes";
 
 function App() {
   const apiCall = async () => {
     try {
-      const response = await fetch("http://localhost:8080", {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "http://localhost:3001",
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      console.log({ data });
-    } catch (e) {
-      console.log(e);
+      const response = await api.get("/quotes");
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
     }
   };
 
