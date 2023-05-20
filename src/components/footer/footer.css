@@ -1,0 +1,17 @@
+footer {
+  background-color: var(--color-primary);
+  display: flex;
+  height: 65px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 35px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+footer p {
+  font-weight: var(--weight-normal);
+  font-size: var(--header-caption);
+  color: white;
+}
