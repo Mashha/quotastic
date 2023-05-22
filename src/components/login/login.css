@@ -1,0 +1,43 @@
+.login-form {
+  margin: 0 35px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+}
+
+.login-inner {
+  margin-top: 150px;
+  grid-column: 1/-1;
+  display: grid;
+  row-gap: 16px;
+}
+
+.pwd-login {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-btn {
+  padding: 8px 16px;
+  border: 2px solid var(--color-primary);
+  border-radius: 32px;
+  background-color: transparent;
+  height: 40px;
+  font-size: var(--header-body);
+  font-weight: var(--weight-light);
+  color: var(--color-primary);
+  font-family: "Raleway", sans-serif;
+}
+
+.sign-up {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--header-body);
+  font-weight: var(--weight-light);
+}
+
+.sign-up a {
+  text-decoration: none;
+  color: var(--color-alternative);
+}
