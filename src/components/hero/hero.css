@@ -3,6 +3,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 50px;
   margin: 0 35px;
+  font-family: "Raleway", sans-serif;
 }
 
 .hero-left {
