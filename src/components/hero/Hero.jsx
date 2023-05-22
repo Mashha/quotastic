@@ -7,13 +7,15 @@ function Hero() {
   return (
     <div className="hero-section">
       <div className="hero-left">
-        <h1>Welcome to Quotastic</h1>
-        <p>
+        <h4>
+          Welcome to <span>Quotastic</span>
+        </h4>
+        <h5>
           Quotastic is free online platform for you to explore the quips,
           quotes, and proverbs. Sign up and express yourself.
-        </p>
+        </h5>
         <button>
-          <Link to="sign-up">sign up</Link>
+          <Link to="/sign up">Sign up</Link>
         </button>
       </div>
       <div className="hero-right">
