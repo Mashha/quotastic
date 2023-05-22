@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&display=swap');
 
 *,
 *::before,
@@ -17,9 +17,10 @@
   --header-body: 16px;
   --header-caption: 12px;
 
-  --weight-light: light;
-  --weight-regular: normal;
-  --weight-bold: bold;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
 
   --color-primary: #de8667;
   --color-alternative: #efb467;

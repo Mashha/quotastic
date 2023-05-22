@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import api from "./api/quotes";
 import SignUp from "./components/signup/SignUp";
 import Login from "./components/login/Login";
+import Nav from "./components/nav/Nav";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const apiCall = async () => {
@@ -22,11 +24,13 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sign up" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
