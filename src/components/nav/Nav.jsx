@@ -17,10 +17,10 @@ function Nav() {
       </Link>
       <ul className={showNav ? "menu-links show" : "menu-links"}>
         <li>
-          <Link>sign up</Link>
+          <Link to="/sign up">sign up</Link>
         </li>
         <li>
-          <Link>login</Link>
+          <Link to="/login">login</Link>
         </li>
       </ul>
       <div className="burger-menu" onClick={handleClick}>
