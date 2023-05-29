@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./App.css";
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import api from "./api/quotes";
+import api from "./api/axios";
 import SignUp from "./components/signup/SignUp";
 import Login from "./components/login/Login";
 import Nav from "./components/nav/Nav";
