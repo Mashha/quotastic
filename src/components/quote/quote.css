@@ -2,10 +2,10 @@
   width: 344px;
   height: 168px;
   padding: 4px 32px 16px 16px;
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow);
   border-radius: 16px;
   display: flex;
-  gap: 16px;
+  gap: 21px;
   font-family: "Raleway", sans-serif;
 }
 
@@ -44,9 +44,19 @@
 
 .name-and-avatar {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 
 .name-and-avatar h2 {
   font-size: var(--header-caption);
+  font-weight: var(--weight-regular);
+}
+
+.name-and-avatar img {
+  width: 24px;
+  height: 24px;
+  box-shadow: var(--shadow);
+  border-radius: 100%;
+  object-fit: cover;
 }

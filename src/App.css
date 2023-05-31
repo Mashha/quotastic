@@ -26,6 +26,7 @@
   --color-alternative: #efb467;
   --color-dark: #322d38;
   --gradient: linear-gradient(to top right, #de8667, #efb467);
+  --shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
 }
 
 body {

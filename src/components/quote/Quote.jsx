@@ -17,7 +17,7 @@ function Quote({quote}) {
           {quote.content}
         </p>
         <div className="name-and-avatar">
-          <img src="" alt="" />
+          <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/profile-photos-4.jpg" alt="" />
           <h2>{quote.author.first_name} {quote.author.last_name}</h2>
         </div>
       </div>
