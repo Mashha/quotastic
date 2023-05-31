@@ -2,15 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import heroImg from "../../assets/images/hero-image.png";
 import "./hero.css";
+import Quote from "../quote/Quote";
 
 function Hero({ success }) {
   return (
     <div className="hero-section">
       {success ? (
         <div className="hero-logged-in">
-          <h1>Quote Of The Day</h1>
+          <h4>Quote Of The Day</h4>
           <p>Quote of the day is randomly chosen quote.</p>
-          <div className="random-quote"></div>
+          <div className="random-quote">
+            <Quote />
+          </div>
         </div>
       ) : (
         <>

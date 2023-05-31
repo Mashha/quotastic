@@ -59,4 +59,19 @@ button a {
 
 .hero-logged-in {
   grid-column: 1 /-1;
+  margin-top: 50px;
+  display: grid;
+}
+
+.hero-logged-in h4 {
+  text-align: center;
+  color: var(--color-primary);
+  padding-bottom: 8px;
+}
+
+.hero-logged-in p {
+  font-size: var(--header-body);
+  font-weight: var(--weight-regular);
+  text-align: center;
+  padding-bottom: 30px;
 }

@@ -1,0 +1,50 @@
+.quote-card {
+  width: 344px;
+  height: 168px;
+  padding: 4px 32px 16px 16px;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  display: flex;
+  gap: 16px;
+  font-family: "Raleway", sans-serif;
+}
+
+.voting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.voting span {
+  font-size: var(--header-body);
+  font-weight: var(--weight-regular);
+}
+
+.voting button {
+  border: none;
+  background: transparent;
+}
+
+.quote-part {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  padding-top: 8px;
+}
+
+.quote-part p {
+  font-size: var(--header-body);
+  font-weight: var(--weight-regular);
+  text-align: left;
+}
+
+.name-and-avatar {
+  display: flex;
+  gap: 10px;
+}
+
+.name-and-avatar h2 {
+  font-size: var(--header-caption);
+}
