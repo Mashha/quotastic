@@ -14,6 +14,7 @@ function Login() {
   const [pwd, setPwd] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [success, setSuccess] = useState(false);
+  const [user, setUser] = useState({});
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -26,7 +27,8 @@ function Login() {
           withCredentials: true,
         }
       );
-      console.log(JSON.stringify(response?.data));
+      console.log(response?.data);
+      setUser(response?.data);
       const accessToken = response?.data?.accessToken;
       setAuth({ email, pwd, accessToken });
       setEmail("");
@@ -48,7 +50,9 @@ function Login() {
   return (
     <>
       {success ? (
-        <p>you are logged in</p>
+        <p>
+          you are logged in {user.first_name} {user.last_name}
+        </p>
       ) : (
         <div className="login-form">
           <div className="login-inner">
