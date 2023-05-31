@@ -27,7 +27,6 @@
   font-size: var(--header-body);
   font-weight: var(--weight-light);
   color: var(--color-primary);
-  font-family: "Raleway", sans-serif;
 }
 
 .sign-up {

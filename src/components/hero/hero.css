@@ -3,7 +3,6 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 50px;
   margin: 0 35px;
-  font-family: "Raleway", sans-serif;
 }
 
 .hero-left {
@@ -44,7 +43,6 @@ button a {
   font-size: var(--header-body);
   color: white;
   text-decoration: none;
-  font-family: "Raleway", sans-serif;
 }
 
 .hero-right {

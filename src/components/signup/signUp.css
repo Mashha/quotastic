@@ -130,7 +130,6 @@ form input {
   color: white;
   font-size: var(--header-body);
   font-weight: var(--weight-light);
-  font-family: "Raleway", sans-serif;
 }
 
 .sign-in {
