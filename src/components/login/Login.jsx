@@ -1,5 +1,5 @@
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../../context/AuthProvider";
 import axios from "../../api/axios";
@@ -15,6 +15,7 @@ function Login({ success, setSuccess }) {
   const [pwd, setPwd] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -34,6 +35,8 @@ function Login({ success, setSuccess }) {
       setEmail("");
       setPwd("");
       setSuccess(true);
+      navigate("/");
+      
     } catch (err) {
       if (!err.response) {
         setErrorMsg("No server response");
@@ -49,57 +52,56 @@ function Login({ success, setSuccess }) {
 
   return (
     <>
-    
-        <div className="login-form">
-          <div className="login-inner">
-            <p
-              ref={errRef}
-              className={errorMsg ? "errmsg" : "hidden"}
-              aria-live="assertive"
-            >
-              {errorMsg}
+      <div className="login-form">
+        <div className="login-inner">
+          <p
+            ref={errRef}
+            className={errorMsg ? "errmsg" : "hidden"}
+            aria-live="assertive"
+          >
+            {errorMsg}
+          </p>
+          <div className="top">
+            <h4>
+              Welcome <span>Back!</span>
+            </h4>
+            <p>
+              Thank you for coming back. Hope you have a good day and inspire
+              others.
             </p>
-            <div className="top">
-              <h4>
-                Welcome <span>Back!</span>
-              </h4>
-              <p>
-                Thank you for coming back. Hope you have a good day and inspire
-                others.
-              </p>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="email-input">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="example@net.com"
+                autoComplete="off"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                required
+              />
             </div>
-            <form onSubmit={handleSubmit}>
-              <div className="email-input">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="example@net.com"
-                  autoComplete="off"
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                  required
-                />
-              </div>
-              <div className="pwd-login">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="••••••••••••••••"
-                  onChange={(e) => setPwd(e.target.value)}
-                  value={pwd}
-                  required
-                />
-              </div>
-              <button className="login-btn">Login</button>
-            </form>
-            <div className="sign-up">
-              <p>Don't have an account</p>
-              <Link to="/sign up">Sign up</Link>
+            <div className="pwd-login">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="••••••••••••••••"
+                onChange={(e) => setPwd(e.target.value)}
+                value={pwd}
+                required
+              />
             </div>
+            <button className="login-btn">Login</button>
+          </form>
+          <div className="sign-up">
+            <p>Don't have an account</p>
+            <Link to="/sign up">Sign up</Link>
           </div>
         </div>
+      </div>
     </>
   );
 }
