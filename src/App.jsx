@@ -2,33 +2,37 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import api from "./api/axios";
+import axios from "./api/axios";
 import SignUp from "./components/signup/SignUp";
 import Login from "./components/login/Login";
 import Nav from "./components/nav/Nav";
 import Footer from "./components/footer/Footer";
 
+const QUOTES_URL = "/quotes"
+
 function App() {
   const [success, setSuccess] = useState(false);
+  const [quotesData, setQuotesData] = useState([])
 
-  const apiCall = async () => {
+  const apiCallQuotes = async () => {
     try {
-      const response = await api.get("/quotes");
-      console.log(response.data);
+      const response = await axios.get(QUOTES_URL);
+      setQuotesData(response.data.data);
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    apiCall();
+    apiCallQuotes();
   }, []);
+
 
   return (
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<Home success={success} />} />
+        <Route path="/" element={<Home success={success} quotesData={quotesData}/>} />
         <Route path="/sign up" element={<SignUp />} />
         <Route
           path="/login"

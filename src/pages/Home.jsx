@@ -1,10 +1,10 @@
 import React from "react";
 import Hero from "../components/hero/Hero";
 
-function Home({ success }) {
+function Home({ success, quotesData }) {
   return (
     <>
-      <Hero success={success} />
+      <Hero success={success} quotesData={quotesData}/>
     </>
   );
 }
