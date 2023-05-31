@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../../context/AuthProvider";
 import axios from "../../api/axios";
+import Hero from "../hero/Hero";
 
 const LOGIN_URL = "/login";
 
-function Login() {
+function Login({ success, setSuccess }) {
   const { setAuth } = useContext(AuthContext);
   const errRef = useRef();
 
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const [success, setSuccess] = useState(false);
   const [user, setUser] = useState({});
 
   async function handleSubmit(e) {
@@ -49,11 +49,6 @@ function Login() {
 
   return (
     <>
-      {success ? (
-        <p>
-          you are logged in {user.first_name} {user.last_name}
-        </p>
-      ) : (
         <div className="login-form">
           <div className="login-inner">
             <p
@@ -104,7 +99,6 @@ function Login() {
             </div>
           </div>
         </div>
-      )}
     </>
   );
 }

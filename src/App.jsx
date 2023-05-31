@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -9,6 +9,8 @@ import Nav from "./components/nav/Nav";
 import Footer from "./components/footer/Footer";
 
 function App() {
+  const [success, setSuccess] = useState(false);
+
   const apiCall = async () => {
     try {
       const response = await api.get("/quotes");
@@ -24,11 +26,14 @@ function App() {
 
   return (
     <BrowserRouter>
-    <Nav />
+      <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home success={success} />} />
         <Route path="/sign up" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login success={success} setSuccess={setSuccess} />}
+        />
       </Routes>
       <Footer />
     </BrowserRouter>

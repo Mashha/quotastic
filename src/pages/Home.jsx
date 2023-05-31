@@ -1,10 +1,10 @@
 import React from "react";
 import Hero from "../components/hero/Hero";
 
-function Home() {
+function Home({ success }) {
   return (
     <>
-      <Hero />
+      <Hero success={success} />
     </>
   );
 }

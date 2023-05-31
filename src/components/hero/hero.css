@@ -54,3 +54,9 @@ button a {
 .hero-right img {
   width: 100%;
 }
+
+/* logged in */
+
+.hero-logged-in {
+  grid-column: 1 /-1;
+}
