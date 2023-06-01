@@ -28,7 +28,7 @@ function Hero({ success, quotesData }) {
         <>
           <div className="hero-left">
             <h4>
-              Welcome to <span>Quotastic</span>
+              Welcome <br /> to <span>Quotastic</span>
             </h4>
             <h5>
               Quotastic is free online platform for you to explore the quips,
