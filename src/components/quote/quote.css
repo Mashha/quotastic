@@ -1,5 +1,5 @@
 .quote-card {
-  width: 344px;
+  max-width: 344px;
   height: 168px;
   padding: 4px 32px 16px 16px;
   box-shadow: var(--shadow);
@@ -58,4 +58,10 @@
   box-shadow: var(--shadow);
   border-radius: 100%;
   object-fit: cover;
+}
+
+@media (min-width: 800px){
+  .quote-card {
+    max-width: 430px;
+  }
 }
