@@ -1,9 +1,16 @@
 .sign-up-form {
-  margin: 50px 35px;
+  margin: 0 35px;
   display: grid;
-  column-gap: 20px;
   grid-template-columns: repeat(4, 1fr);
   color: var(--color-dark);
+}
+
+.sign-up-inner {
+  display: grid;
+  margin-top: 150px;
+  grid-column: 1/-1;
+  place-self: center;
+  max-width: 420px;
   row-gap: 16px;
 }
 
@@ -90,9 +97,9 @@ form input {
 }
 
 .first-last {
-  display: flex;
+  display: grid;
   column-gap: 16px;
-  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
   align-items: end;
 }
 
@@ -101,17 +108,7 @@ form input {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 122.5px;
-}
-
-.avatar-image {
-  width: 64px;
-  height: 64px;
-}
-
-.avatar-image img {
-  width: 100%;
-  height: 100%;
+  overflow: hidden;
 }
 
 .pwd {
@@ -142,4 +139,16 @@ form input {
 .sign-in a {
   text-decoration: none;
   color: var(--color-alternative);
+}
+
+@media (min-width: 800px) {
+  .sign-up-form {
+    height: calc(100vh - 96px);
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0 70px;
+  }
+
+  .sign-up-inner {
+    margin-top: 0;
+  }
 }

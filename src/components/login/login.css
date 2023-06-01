@@ -10,6 +10,8 @@
   grid-column: 1/-1;
   display: grid;
   row-gap: 16px;
+  max-width: 420px;
+  place-self: center;
 }
 
 .pwd-login {
@@ -51,4 +53,15 @@
 
 .hidden {
   visibility: hidden;
+}
+
+@media (min-width: 800px) {
+  .login-form {
+    height: calc(100vh - 96px);
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0 70px;
+  }
+  .login-inner {
+    margin-top: 0;
+  }
 }
