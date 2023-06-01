@@ -54,7 +54,7 @@ nav {
   display: flex;
 }
 
-@media (min-width: 430px) {
+@media (min-width: 800px) {
   .burger-menu {
     display: none;
   }
@@ -73,9 +73,43 @@ nav {
 
   .menu-links {
     padding: 0;
+    display: flex;
+    gap: 10px;
   }
 
   .menu-links li {
     padding: 0;
+  }
+
+  .menu-links li a {
+    padding: 8px 16px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    width: 137px;
+    height: 40px;
+    display: grid;
+    place-content: center;
+  }
+
+  .menu-links li:first-child a {
+    background: var(--color-primary);
+    border-radius: 32px;
+    font-size: var(--header-body);
+    color: white;
+    font-weight: var(--weight-regular);
+  }
+  
+  .menu-links li:last-child a {
+    box-shadow: inset 0px 0px 0px 2px var(--color-primary);
+    background: transparent;
+    border-radius: 32px;
+    font-size: var(--header-body);
+    color: var(--color-primary);
+    font-weight: var(--weight-regular);
+  }
+}
+
+@media (min-width: 1000px) {
+  nav {
+    margin: 0 70px;
   }
 }

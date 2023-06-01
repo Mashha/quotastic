@@ -18,12 +18,12 @@ function Nav() {
       <ul className={showNav ? "menu-links show" : "menu-links"}>
         <li>
           <Link to="/sign up" onClick={() => setShowNav(false)}>
-            sign up
+            Sign up
           </Link>
         </li>
         <li>
           <Link to="/login" onClick={() => setShowNav(false)}>
-            login
+            Login
           </Link>
         </li>
       </ul>
