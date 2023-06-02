@@ -38,3 +38,19 @@ body {
   font-size: var(--header-body);
   font-weight: var(--weight-bold);
 }
+
+.instructions {
+  display: block;
+}
+
+.errmsg {
+  background-color: var(--color-alternative);
+  color: var(--color-dark);
+  font-weight: var(--weight-regular);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}

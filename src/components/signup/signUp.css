@@ -141,6 +141,14 @@ form input {
   color: var(--color-alternative);
 }
 
+.instructions {
+  font-size: var(--header-caption);
+  font-weight: var(--weight-light);
+  background-color: var(--color-alternative);
+  border-radius: 10px;
+  padding: 4px;
+}
+
 @media (min-width: 800px) {
   .sign-up-form {
     height: calc(100vh - 96px);
