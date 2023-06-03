@@ -1,6 +1,7 @@
 import "./signUp.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
+import axios from "../../api/axios";
 import avatar from "../../assets/images/avatar.png";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -11,6 +12,7 @@ const REGISTER_URL = "/signup";
 function SignUp() {
   const errRef = useRef();
   const userEmail = useRef();
+  const navigate = useNavigate()
 
   const [firstName, setFirstName] = useState("");
   const [validFirstName, setValidFirstName] = useState(false);
@@ -33,6 +35,7 @@ function SignUp() {
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [imageAvatar, setImageAvatar] = useState(null);
+  const [user, setUser] = useState({})
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
@@ -83,15 +86,14 @@ function SignUp() {
           withCredentials: true,
         }
       );
-      console.log(response?.data);
-      console.log(response?.accessToken);
+      setUser(response?.data);
       setSuccess(true);
       setEmail("");
       setFirstName("");
       setLastName("");
       setPwd("");
       setMatchPwd("");
-      //navigate("/login");
+      navigate("/login");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No server response");
