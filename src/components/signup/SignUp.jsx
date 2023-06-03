@@ -3,18 +3,22 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import avatar from "../../assets/images/avatar.png";
 
+const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = "/signup";
 
 function SignUp() {
   const errRef = useRef();
+  const userEmail = useRef();
 
   const [firstName, setFirstName] = useState("");
-  //const [validFirstName, setValidFirstName] = useState(false);
+  const [validFirstName, setValidFirstName] = useState(false);
+  const [firstNameFocus, setFirstNameFocus] = useState(false);
 
   const [lastName, setLastName] = useState("");
-  //const [validLastName, setValidLastName] = useState(false);
+  const [validLastName, setValidLastName] = useState(false);
+  const [lastNameFocus, setLastNameFocus] = useState(false);
 
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false);
@@ -22,7 +26,7 @@ function SignUp() {
 
   const [pwd, setPwd] = useState("");
   const [validPwd, setValidPwd] = useState(false);
-  //const [pwdFocus, setPwdFocus] = useState(false);
+  const [pwdFocus, setPwdFocus] = useState(false);
 
   const [matchPwd, setMatchPwd] = useState("");
   const [validMatch, setValidMatch] = useState(false);
@@ -32,8 +36,17 @@ function SignUp() {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
+    userEmail.current.focus();
+  }, []);
+
+  useEffect(() => {
     setValidEmail(EMAIL_REGEX.test(email));
   }, [email]);
+
+  useEffect(() => {
+    setValidFirstName(USER_REGEX.test(firstName));
+    setValidLastName(USER_REGEX.test(lastName));
+  }, [firstName, lastName]);
 
   useEffect(() => {
     setValidPwd(PWD_REGEX.test(pwd));
@@ -42,9 +55,24 @@ function SignUp() {
 
   useEffect(() => {
     setErrMsg("");
-  }, [email, pwd, matchPwd]);
+  }, [email, firstName, lastName, pwd, matchPwd]);
 
-  return (
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSuccess(true);
+    setEmail("");
+    setFirstName("");
+    setLastName("");
+    setPwd("");
+    setMatchPwd("");
+    console.log(firstName, lastName, email, pwd);
+  };
+
+  return success ? (
+    <>
+      <h1>you are signed up</h1>
+    </>
+  ) : (
     <div className="sign-up-form">
       <div className="sign-up-inner">
         <p
@@ -69,23 +97,23 @@ function SignUp() {
               name="file"
               className="fileBtn"
               accept="image/*"
-              autoComplete="off"
             />
           </div>
         </div>
 
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div className="email-input">
             <label htmlFor="email">Email</label>
             <input
               type="email"
-              name="email"
+              id="email"
               placeholder="example@net.com"
               autoComplete="off"
               required
               onChange={(e) => setEmail(e.target.value)}
               onFocus={() => setEmailFocus(true)}
               value={email}
+              ref={userEmail}
             />
             <p
               className={
@@ -101,11 +129,17 @@ function SignUp() {
               <label htmlFor="first">First Name</label>
               <input
                 type="text"
-                name="first"
+                id="first"
                 placeholder="John"
                 autoComplete="off"
                 required
-                onChange={(e) => setFirstName(e.target.value)}
+                onChange={(e) =>
+                  setFirstName(
+                    e.target.value.charAt(0).toUpperCase() +
+                      e.target.value.slice(1)
+                  )
+                }
+                onFocus={() => setFirstNameFocus(true)}
                 value={firstName}
               />
             </div>
@@ -114,31 +148,66 @@ function SignUp() {
               <label htmlFor="last">Last Name</label>
               <input
                 type="text"
-                name="last"
+                id="last"
                 placeholder="Scott"
                 autoComplete="off"
                 required
-                onChange={(e) => setLastName(e.target.value)}
+                onChange={(e) =>
+                  setLastName(
+                    e.target.value.charAt(0).toUpperCase() +
+                      e.target.value.slice(1)
+                  )
+                }
+                onFocus={() => setLastNameFocus(true)}
                 value={lastName}
               />
             </div>
           </div>
+
+          <p
+            className={
+              firstNameFocus && firstName && !validFirstName
+                ? "instructions"
+                : "hidden"
+            }
+          >
+            4 to 24 characters.
+            <br />
+            Must begin with a letter.
+            <br />
+            Letters, numbers, underscores, hyphens allowed.
+          </p>
+          <p
+            className={
+              lastNameFocus && lastName && !validLastName
+                ? "instructions"
+                : "hidden"
+            }
+          >
+            4 to 24 characters.
+            <br />
+            Must begin with a letter.
+            <br />
+            Letters, numbers, underscores, hyphens allowed.
+          </p>
 
           <div className="pwd">
             <div className="pwd-first">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
-                name="password"
+                id="password"
                 placeholder="••••••••••••••••"
                 onChange={(e) => setPwd(e.target.value)}
+                onFocus={() => setPwdFocus(true)}
                 value={pwd}
                 required
-                autocomplete="new-password"
+                autoComplete="new-password"
               />
-              {/* <p
-                id="pwdnote"
-                className={pwdFocus && !validPwd ? "instructions" : "hidden"}
+              <p
+                className={
+                  pwdFocus && pwd && !validPwd ? "instructions" : "hidden"
+                }
               >
                 8 to 24 characters.
                 <br />
@@ -151,14 +220,14 @@ function SignUp() {
                 <span aria-label="hashtag">#</span>{" "}
                 <span aria-label="dollar sign">$</span>{" "}
                 <span aria-label="percent">%</span>
-              </p> */}
+              </p>
             </div>
 
             <div className="pwd-repeat">
               <label htmlFor="repeat-password">Confirm Password</label>
               <input
                 type="password"
-                name="repeat-password"
+                id="repeat-password"
                 placeholder="••••••••••••••••"
                 required
                 onChange={(e) => setMatchPwd(e.target.value)}
@@ -177,7 +246,15 @@ function SignUp() {
           </div>
           <button
             className="submit-btn"
-            disabled={!validEmail || !validPwd || !validMatch ? true : false}
+            disabled={
+              !validEmail ||
+              !validFirstName ||
+              !validLastName ||
+              !validPwd ||
+              !validMatch
+                ? true
+                : false
+            }
           >
             Sign Up
           </button>
