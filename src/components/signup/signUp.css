@@ -53,11 +53,12 @@ h4 {
 .avatar-image-top img {
   width: 100%;
   height: 100%;
+  border-radius: 100%;
 }
 
-.fileBtn {
+/* .fileBtn {
   display: none;
-}
+} */
 
 form {
   display: flex;

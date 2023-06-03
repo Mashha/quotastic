@@ -32,6 +32,8 @@ function SignUp() {
   const [validMatch, setValidMatch] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
 
+  const [imageAvatar, setImageAvatar] = useState(null);
+
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -56,6 +58,12 @@ function SignUp() {
   useEffect(() => {
     setErrMsg("");
   }, [email, firstName, lastName, pwd, matchPwd]);
+
+  const addImageFromFile = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setImageAvatar(URL.createObjectURL(e.target.files[0]));
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,11 +98,12 @@ function SignUp() {
           {/* upload image option */}
           <div className="avatar-image-top">
             <label htmlFor="file">
-              <img src={avatar} alt="" />{" "}
+              <img src={!imageAvatar ? avatar : imageAvatar} alt="" />{" "}
             </label>
             <input
               type="file"
-              name="file"
+              id="file"
+              onChange={addImageFromFile}
               className="fileBtn"
               accept="image/*"
             />
