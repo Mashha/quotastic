@@ -80,6 +80,7 @@ function SignUp() {
           email,
           password: pwd,
           confirm_password: matchPwd,
+          avatar: imageAvatar
         }),
         {
           headers: { "Content-Type": "application/json" },
