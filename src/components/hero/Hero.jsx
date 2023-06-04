@@ -13,7 +13,7 @@ function Hero({ success, quotesData }) {
     setCurrentQuote(Math.floor(Math.random() * randomNum))
   }, [])
 
-  
+
   return (
     <div className="hero-section">
       {success ? (
@@ -35,7 +35,7 @@ function Hero({ success, quotesData }) {
               quotes, and proverbs. Sign up and express yourself.
             </h5>
             <button>
-              <Link to="/sign up">Sign up</Link>
+              <Link to="/signup">Sign up</Link>
             </button>
           </div>
           <div className="hero-right">

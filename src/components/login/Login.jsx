@@ -98,7 +98,7 @@ function Login({ success, setSuccess }) {
           </form>
           <div className="sign-up">
             <p>Don't have an account</p>
-            <Link to="/sign up">Sign up</Link>
+            <Link to="/signup">Sign up</Link>
           </div>
         </div>
       </div>
