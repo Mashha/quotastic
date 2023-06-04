@@ -13,7 +13,7 @@ function Hero({ success, quotesData }) {
     setCurrentQuote(Math.floor(Math.random() * randomNum))
   }, [])
 
-
+  
   return (
     <div className="hero-section">
       {success ? (
