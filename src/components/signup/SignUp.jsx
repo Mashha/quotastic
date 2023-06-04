@@ -132,6 +132,7 @@ function SignUp() {
               <div className="avatar-image-top">
                 <label htmlFor="file">
                   <img src={!imageAvatar ? avatar : imageAvatar} alt="" />{" "}
+                  <div className="overlay"></div>
                 </label>
                 <input
                   type="file"
