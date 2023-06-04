@@ -33,7 +33,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home success={success} quotesData={quotesData}/>} />
-        <Route path="/sign up" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route
           path="/login"
           element={<Login success={success} setSuccess={setSuccess} />}
