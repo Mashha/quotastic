@@ -7,19 +7,13 @@ import Hero from "../hero/Hero";
 
 const LOGIN_URL = "/login";
 
-function Login({ success, setSuccess }) {
+function Login({user, setUser}) {
   const { setAuth } = useContext(AuthContext);
   const errRef = useRef();
 
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const [user, setUser] = useState(() => {
-    if (localStorage.getItem("token")) {
-      return JSON.parse(localStorage.getItem("token"));
-    }
-    return null;
-  });
 
   const navigate = useNavigate();
 
@@ -46,9 +40,8 @@ function Login({ success, setSuccess }) {
       setAuth({ email, pwd, refreshToken });
       setEmail("");
       setPwd("");
-      setSuccess(true);
       navigate("/");
-      
+
     } catch (err) {
       if (!err.response) {
         setErrorMsg("No server response");

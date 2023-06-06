@@ -38,7 +38,6 @@ function SignUp() {
   const [user, setUser] = useState({})
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     userEmail.current.focus();
@@ -88,13 +87,13 @@ function SignUp() {
         }
       );
       setUser(response?.data);
-      setSuccess(true);
       setEmail("");
       setFirstName("");
       setLastName("");
       setPwd("");
       setMatchPwd("");
       navigate("/login");
+
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No server response");
@@ -105,15 +104,10 @@ function SignUp() {
       }
       errRef.current.focus();
     }
-
-    console.log(firstName, lastName, email, pwd);
   };
 
   return (
     <>
-      {success ? (
-        <h1>you are signed up</h1>
-      ) : (
         <div className="sign-up-form">
           <div className="sign-up-inner">
             <p
@@ -310,7 +304,6 @@ function SignUp() {
             </div>
           </div>
         </div>
-      )}
     </>
   );
 }

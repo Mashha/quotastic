@@ -4,26 +4,27 @@ import heroImg from "../../assets/images/hero-image.png";
 import "./hero.css";
 import Quote from "../quote/Quote";
 
-function Hero({ success, quotesData }) {
-
-  const [currentQuote, setCurrentQuote] = useState(0)
+function Hero({ user, quotesData }) {
+  const [currentQuote, setCurrentQuote] = useState(quotesData[0]);
 
   useEffect(() => {
-    const randomNum = quotesData.length
-    setCurrentQuote(Math.floor(Math.random() * randomNum))
-  }, [])
+    const randomNum = Math.floor(Math.random() * quotesData.length);
+    setCurrentQuote(quotesData[randomNum]);
+  }, []);
 
-
+  console.log(quotesData, currentQuote, user);
   return (
     <div className="hero-section">
-      {success ? (
-        <div className="hero-logged-in">
-          <h4>Quote Of The Day</h4>
-          <p>Quote of the day is randomly chosen quote.</p>
-          <div className="random-quote">
-            <Quote quote={quotesData[currentQuote]}/>
+      {user ? (
+        <>
+          <div className="hero-logged-in">
+            <h4>Quote Of The Day</h4>
+            <p>Quote of the day is randomly chosen quote.</p>
+            <div className="random-quote">
+              {currentQuote && <Quote quote={currentQuote} />}
+            </div>
           </div>
-        </div>
+        </>
       ) : (
         <>
           <div className="hero-left">

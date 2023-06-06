@@ -11,12 +11,19 @@ import Footer from "./components/footer/Footer";
 const QUOTES_URL = "/quotes"
 
 function App() {
-  const [success, setSuccess] = useState(false);
+  const [user, setUser] = useState(() => {
+    if (localStorage.getItem("token")) {
+      return JSON.parse(localStorage.getItem("token"));
+    }
+    return null;
+  });
+
   const [quotesData, setQuotesData] = useState([])
 
   const apiCallQuotes = async () => {
     try {
       const response = await axios.get(QUOTES_URL);
+      // console.log(response.data.data)
       setQuotesData(response.data.data);
     } catch (err) {
       console.log(err);
@@ -32,12 +39,10 @@ function App() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<Home success={success} quotesData={quotesData}/>} />
+        <Route path="/" element={<Home user={user} quotesData={quotesData}/>} />
         <Route path="/signup" element={<SignUp />} />
         <Route
-          path="/login"
-          element={<Login success={success} setSuccess={setSuccess} />}
-        />
+          path="/login" element={<Login user={user} setUser={setUser} />} />
       </Routes>
       <Footer />
     </BrowserRouter>
