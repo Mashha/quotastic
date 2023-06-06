@@ -1,5 +1,5 @@
 import "./login.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../../context/AuthProvider";
 import axios from "../../api/axios";
@@ -14,7 +14,13 @@ function Login({ success, setSuccess }) {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(() => {
+    if (localStorage.getItem("token")) {
+      return JSON.parse(localStorage.getItem("token"));
+    }
+    return null;
+  });
+
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
@@ -28,10 +34,16 @@ function Login({ success, setSuccess }) {
           withCredentials: true,
         }
       );
-      console.log(response?.data);
-      setUser(response?.data);
-      const accessToken = response?.data?.accessToken;
-      setAuth({ email, pwd, accessToken });
+      setUser(
+        localStorage.setItem(
+          "token",
+          JSON.stringify(response.data.refresh_token)
+        )
+      );
+      const refreshToken = response?.data?.refresh_token;
+      console.log(refreshToken);
+      console.log(user)
+      setAuth({ email, pwd, refreshToken });
       setEmail("");
       setPwd("");
       setSuccess(true);
