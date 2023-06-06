@@ -10,7 +10,7 @@ function Hero({ user, quotesData }) {
   useEffect(() => {
     const randomNum = Math.floor(Math.random() * quotesData.length);
     setCurrentQuote(quotesData[randomNum]);
-  }, []);
+  }, [quotesData]);
 
   console.log(quotesData, currentQuote, user);
   return (
